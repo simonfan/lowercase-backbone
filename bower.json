@@ -1,7 +1,7 @@
 {
   "name": "lowercase-backbone",
   "main": "built/lowercase-backbone.js",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Some module...",
   "dependencies": {
     "subject": "~0.3.3",

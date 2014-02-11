@@ -1,1 +1,1 @@
-["base.js"]
+["collection.js","model.js","router.js","view.js"]
