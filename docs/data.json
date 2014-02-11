@@ -1,0 +1,33 @@
+{
+    "project": {
+        "name": "lowercase-backbone",
+        "version": "0.0.0"
+    },
+    "files": {
+        "src/index.js": {
+            "name": "src/index.js",
+            "modules": {
+                "lowercase-backbone": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "lowercase-backbone": {
+            "name": "lowercase-backbone",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/index.js",
+            "line": 5,
+            "description": "All this module does is to modify the way backbone\nobjects are instantiated. Syntatic sugar."
+        }
+    },
+    "classes": {},
+    "classitems": [],
+    "warnings": []
+}
