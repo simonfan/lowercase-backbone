@@ -1,17 +1,18 @@
 {
   "name": "lowercase-backbone",
   "main": "built/lowercase-backbone.js",
-  "version": "0.1.2",
+  "version": "0.2.2",
   "description": "Some module...",
   "dependencies": {
-    "subject": "~0.3.3",
-    "backbone": "~1.1.0"
+	"subject": "~0.3.3",
+	"backbone": "~1.1.0",
+	"lodash": "~2.4.1"
   },
   "devDependencies": {
-    "requirejs": "*",
-    "requirejs-text": "*",
-    "underscore": "*",
-    "jquery": "*",
-    "qunit": "*"
+	"requirejs": "*",
+	"requirejs-text": "*",
+	"underscore": "*",
+	"jquery": "*",
+	"qunit": "*"
   }
 }

@@ -23,11 +23,13 @@
 
 		it('instantiation', function () {
 
-			var model = backbone(Backbone.Model),
+			var model = backbone.model,
 				fruit = model({
 					name: 'Banana',
 					color: 'yellow'
 				});
+
+			console.log(backbone.model);
 
 			fruit.get('name').should.eql('Banana');
 

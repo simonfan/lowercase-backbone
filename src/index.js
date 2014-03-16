@@ -17,32 +17,74 @@ define(function (require, exports, module) {
 	'use strict';
 
 	var subject = require('subject'),
-		Backbone = require('backbone');
+		Backbone = require('backbone'),
+		_ = require('lodash');
 
-	var backbone = module.exports = function adapt(original) {
+	var backbone = module.exports = {};
 
-		// create a subject object with the original's prototype
-		var builder = subject(original.prototype);
+	// proto properties
+	backbone.model = subject(Backbone.Model.prototype);
+	// define initialization logic
+	backbone.model.proto('initialize', function lowercaseBackboneModel(attributes, options) {
 
-		// Overwrite the original initialize
-		builder.proto('initialize', function () {
+		/* jshint ignore:start */
+		var attrs = attributes || {};
+		options || (options = {});
+		this.cid = _.uniqueId('c');
+		this.attributes = {};
+		if (options.collection) this.collection = options.collection;
+		if (options.parse) attrs = this.parse(attrs, options) || {};
+		attrs = _.defaults({}, attrs, _.result(this, 'defaults'));
+		this.set(attrs, options);
+		this.changed = {};
+	//	this.initialize.apply(this, arguments);
+		/* jshint ignore:end */
+	});
 
-			// put the original intialize back
-			this.initialize = original.prototype.initialize;
+	// proto properties
+	backbone.collection = subject(Backbone.Collection.prototype);
+	// initialization
+	backbone.collection.proto('initialize', function lowercaseBackboneCollection(models, options) {
 
-			// call original constructor
-			// (it requires the original initialze to be at place)
-			original.apply(this, arguments);
-		});
+		/* jshint ignore:start */
+		options || (options = {});
+		if (options.model) this.model = options.model;
+		if (options.comparator !== void 0) this.comparator = options.comparator;
+		this._reset();
+	//	onlu line removed:
+	//	this.initialize.apply(this, arguments);
+		if (models) this.reset(models, _.extend({silent: true}, options));
+		/* jshint ignore:end */
+	});
 
-		return builder;
-	};
+	// proto properties
+	backbone.view = subject(Backbone.View.prototype);
+	// initialization
+	backbone.view.proto('initialize', function lowercaseBackboneView(options) {
 
-	backbone.model = backbone(Backbone.Model);
-	backbone.collection = backbone(Backbone.Collection);
-	backbone.view = backbone(Backbone.View);
-	backbone.router = backbone(Backbone.Router);
+		/* jshint ignore:start */
+		this.cid = _.uniqueId('view');
+		options || (options = {});
+		_.extend(this, _.pick(options, viewOptions));
+		this._ensureElement();
+	//	this.initialize.apply(this, arguments);
+		this.delegateEvents();
+		/* jshint ignore:end */
+	});
+
+
+	// prototype properties
+	backbone.router = subject(Backbone.Router.prototype);
+	// initialization
+	backbone.router.proto(function lowercaseBackboneRouter(options) {
+
+		/* jshint ignore:start */
+		options || (options = {});
+		if (options.routes) this.routes = options.routes;
+		this._bindRoutes();
+	//	this.initialize.apply(this, arguments);
+		/* jshint ignore:end */
+	});
+
 	backbone.history = Backbone.history;
-
-	return backbone;
 });
