@@ -28,6 +28,41 @@
         }
     },
     "classes": {},
-    "classitems": [],
-    "warnings": []
+    "classitems": [
+        {
+            "file": "src/index.js",
+            "line": 25,
+            "description": "backbone.model",
+            "class": "",
+            "module": "lowercase-backbone"
+        },
+        {
+            "file": "src/index.js",
+            "line": 64,
+            "description": "backbone.view",
+            "class": "",
+            "module": "lowercase-backbone"
+        },
+        {
+            "file": "src/index.js",
+            "line": 86,
+            "description": "backbone.router",
+            "class": "",
+            "module": "lowercase-backbone"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "Missing item type\nbackbone.model",
+            "line": " src/index.js:25"
+        },
+        {
+            "message": "Missing item type\nbackbone.view",
+            "line": " src/index.js:64"
+        },
+        {
+            "message": "Missing item type\nbackbone.router",
+            "line": " src/index.js:86"
+        }
+    ]
 }

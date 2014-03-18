@@ -110,6 +110,10 @@ define(function (require, exports, module) {
 
 	var backbone = module.exports = {};
 
+	/**
+	 * backbone.model
+	 */
+
 	// proto properties
 	backbone.model = subject(Backbone.Model.prototype);
 	// define initialization logic
@@ -145,6 +149,13 @@ define(function (require, exports, module) {
 		/* jshint ignore:end */
 	});
 
+	/**
+	 * backbone.view
+	 */
+
+	// List of view options to be merged as properties.
+	var viewOptions = [&#x27;model&#x27;, &#x27;collection&#x27;, &#x27;el&#x27;, &#x27;id&#x27;, &#x27;attributes&#x27;, &#x27;className&#x27;, &#x27;tagName&#x27;, &#x27;events&#x27;];
+
 	// proto properties
 	backbone.view = subject(Backbone.View.prototype);
 	// initialization
@@ -160,6 +171,9 @@ define(function (require, exports, module) {
 		/* jshint ignore:end */
 	});
 
+	/**
+	 * backbone.router
+	 */
 
 	// prototype properties
 	backbone.router = subject(Backbone.Router.prototype);
