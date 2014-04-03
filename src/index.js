@@ -82,6 +82,10 @@ define(function (require, exports, module) {
 
 	// proto properties
 	backbone.view = subject(Backbone.View.prototype);
+
+	// List of view options to be merged as properties.
+	var viewOptions = ['model', 'collection', 'el', 'id', 'attributes', 'className', 'tagName', 'events'];
+
 	// initialization
 	backbone.view.proto({
 		initialize: function initialize() {
