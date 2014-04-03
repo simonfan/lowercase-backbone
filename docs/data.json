@@ -38,14 +38,14 @@
         },
         {
             "file": "src/index.js",
-            "line": 64,
+            "line": 76,
             "description": "backbone.view",
             "class": "",
             "module": "lowercase-backbone"
         },
         {
             "file": "src/index.js",
-            "line": 86,
+            "line": 104,
             "description": "backbone.router",
             "class": "",
             "module": "lowercase-backbone"
@@ -58,11 +58,11 @@
         },
         {
             "message": "Missing item type\nbackbone.view",
-            "line": " src/index.js:64"
+            "line": " src/index.js:76"
         },
         {
             "message": "Missing item type\nbackbone.router",
-            "line": " src/index.js:86"
+            "line": " src/index.js:104"
         }
     ]
 }

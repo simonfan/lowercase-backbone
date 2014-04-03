@@ -117,36 +117,48 @@ define(function (require, exports, module) {
 	// proto properties
 	backbone.model = subject(Backbone.Model.prototype);
 	// define initialization logic
-	backbone.model.proto(&#x27;initialize&#x27;, function lowercaseBackboneModel(attributes, options) {
+	backbone.model.proto({
+		initialize: function initialize() {
+			this.initializeBackboneModel.apply(this, arguments);
+		},
 
-		/* jshint ignore:start */
-		var attrs = attributes || {};
-		options || (options = {});
-		this.cid = _.uniqueId(&#x27;c&#x27;);
-		this.attributes = {};
-		if (options.collection) this.collection = options.collection;
-		if (options.parse) attrs = this.parse(attrs, options) || {};
-		attrs = _.defaults({}, attrs, _.result(this, &#x27;defaults&#x27;));
-		this.set(attrs, options);
-		this.changed = {};
-	//	this.initialize.apply(this, arguments);
-		/* jshint ignore:end */
+		initializeBackboneModel: function lowercaseBackboneModel(attributes, options) {
+
+			/* jshint ignore:start */
+			var attrs = attributes || {};
+			options || (options = {});
+			this.cid = _.uniqueId(&#x27;c&#x27;);
+			this.attributes = {};
+			if (options.collection) this.collection = options.collection;
+			if (options.parse) attrs = this.parse(attrs, options) || {};
+			attrs = _.defaults({}, attrs, _.result(this, &#x27;defaults&#x27;));
+			this.set(attrs, options);
+			this.changed = {};
+		//	this.initialize.apply(this, arguments);
+			/* jshint ignore:end */
+		}
 	});
 
 	// proto properties
 	backbone.collection = subject(Backbone.Collection.prototype);
 	// initialization
-	backbone.collection.proto(&#x27;initialize&#x27;, function lowercaseBackboneCollection(models, options) {
+	backbone.collection.proto({
+		initialize: function initialize() {
+			this.initializeBackboneCollection.apply(this, arguments);
+		},
 
-		/* jshint ignore:start */
-		options || (options = {});
-		if (options.model) this.model = options.model;
-		if (options.comparator !== void 0) this.comparator = options.comparator;
-		this._reset();
-	//	onlu line removed:
-	//	this.initialize.apply(this, arguments);
-		if (models) this.reset(models, _.extend({silent: true}, options));
-		/* jshint ignore:end */
+		initializeBackboneCollection: function lowercaseBackboneCollection(models, options) {
+
+			/* jshint ignore:start */
+			options || (options = {});
+			if (options.model) this.model = options.model;
+			if (options.comparator !== void 0) this.comparator = options.comparator;
+			this._reset();
+		//	onlu line removed:
+		//	this.initialize.apply(this, arguments);
+			if (models) this.reset(models, _.extend({silent: true}, options));
+			/* jshint ignore:end */
+		}
 	});
 
 	/**
@@ -159,16 +171,22 @@ define(function (require, exports, module) {
 	// proto properties
 	backbone.view = subject(Backbone.View.prototype);
 	// initialization
-	backbone.view.proto(&#x27;initialize&#x27;, function lowercaseBackboneView(options) {
+	backbone.view.proto({
+		initialize: function initialize() {
+			this.initializeBackboneView.apply(this, arguments);
+		},
 
-		/* jshint ignore:start */
-		this.cid = _.uniqueId(&#x27;view&#x27;);
-		options || (options = {});
-		_.extend(this, _.pick(options, viewOptions));
-		this._ensureElement();
-	//	this.initialize.apply(this, arguments);
-		this.delegateEvents();
-		/* jshint ignore:end */
+		initializeBackboneView: function lowercaseBackboneView(options) {
+
+			/* jshint ignore:start */
+			this.cid = _.uniqueId(&#x27;view&#x27;);
+			options || (options = {});
+			_.extend(this, _.pick(options, viewOptions));
+			this._ensureElement();
+		//	this.initialize.apply(this, arguments);
+			this.delegateEvents();
+			/* jshint ignore:end */
+		}
 	});
 
 	/**
@@ -178,14 +196,20 @@ define(function (require, exports, module) {
 	// prototype properties
 	backbone.router = subject(Backbone.Router.prototype);
 	// initialization
-	backbone.router.proto(function lowercaseBackboneRouter(options) {
+	backbone.router.proto({
+		initialize: function initialize() {
+			this.initializeBackboneRouter.apply(this, arguments);
+		},
 
-		/* jshint ignore:start */
-		options || (options = {});
-		if (options.routes) this.routes = options.routes;
-		this._bindRoutes();
-	//	this.initialize.apply(this, arguments);
-		/* jshint ignore:end */
+		initializeBackboneRouter: function lowercaseBackboneRouter(options) {
+
+			/* jshint ignore:start */
+			options || (options = {});
+			if (options.routes) this.routes = options.routes;
+			this._bindRoutes();
+		//	this.initialize.apply(this, arguments);
+			/* jshint ignore:end */
+		},
 	});
 
 	backbone.history = Backbone.history;
