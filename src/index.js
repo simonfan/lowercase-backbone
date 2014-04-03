@@ -82,10 +82,12 @@ define(function (require, exports, module) {
 
 	// proto properties
 	backbone.view = subject(Backbone.View.prototype);
+
+
 	// initialization
 	backbone.view.proto({
-		initialize: function initialize() {
-			this.initializeBackboneView.apply(this, arguments);
+		initialize: function initialize(options) {
+			this.initializeBackboneView(options);
 		},
 
 		initializeBackboneView: function lowercaseBackboneView(options) {
