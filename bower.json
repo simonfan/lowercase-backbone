@@ -1,10 +1,10 @@
 {
   "name": "lowercase-backbone",
   "main": "built/lowercase-backbone.js",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Some module...",
   "dependencies": {
-    "subject": "0.5.8",
+    "subject": "0.5.9",
     "backbone": "~1.1.0",
     "lodash": "~2.4.1"
   },
@@ -16,6 +16,6 @@
     "qunit": "*"
   },
   "resolutions": {
-    "subject": "0.5.8"
+    "subject": "0.5.9"
   }
 }
