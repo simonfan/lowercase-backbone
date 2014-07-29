@@ -21,6 +21,30 @@
 
 	describe('lowercase-backbone model', function () {
 
+		it('instanceof', function () {
+
+			var model = backbone.model,
+				fruit = model({
+					name: 'Banana',
+					color: 'yellow',
+				});
+
+//			backbone.model.isPrototypeOf()
+
+			fruit.should.be.instanceof(backbone.model);
+
+//			console.log(Backbone.Model);
+
+			var collection = backbone.collection();
+
+		//	console.log(fruit.get('name'));
+
+			collection.add(fruit);
+
+		//	console.log(collection.first().attributes);
+			collection.first().get('name').should.eql('Banana');
+		});
+
 		it('instantiation', function () {
 
 			var model = backbone.model,
@@ -29,7 +53,7 @@
 					color: 'yellow'
 				});
 
-			console.log(backbone.model);
+	//		console.log(backbone.model);
 
 			fruit.get('name').should.eql('Banana');
 
