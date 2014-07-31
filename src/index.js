@@ -16,12 +16,12 @@ if (typeof define !== 'function') { var define = require('amdefine')(module) }
 define(function (require, exports, module) {
 	'use strict';
 
-	var subject = require('subject'),
+	var subject  = require('subject'),
 		Backbone = require('backbone'),
-		_ = require('lodash');
+		Model    = Backbone.Model,
+		_        = require('lodash');
 
 	var backbone = module.exports = {};
-
 	/**
 	 * backbone.model
 	 */
@@ -86,7 +86,7 @@ define(function (require, exports, module) {
 			//////////////////////////
 			//////////////////////////
 			/// original: if (attrs instanceof Model) {
-			if (attrs instanceof _lmodel) return attrs;
+			if (attrs instanceof _lmodel || attrs instanceof Model) return attrs;
 			//////////////////////////
 			//////////////////////////
 			/// MODIFICATIONS HERE ///
@@ -129,7 +129,7 @@ define(function (require, exports, module) {
 				//////////////////////////
 				//////////////////////////
 				/// original: if (attrs instanceof Model) {
-				if (attrs instanceof _lmodel) {
+				if (attrs instanceof _lmodel || attrs instanceof Model) {
 				//////////////////////////
 				//////////////////////////
 				/// MODIFICATIONS HERE ///

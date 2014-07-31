@@ -104,12 +104,12 @@ if (typeof define !== &#x27;function&#x27;) { var define = require(&#x27;amdefin
 define(function (require, exports, module) {
 	&#x27;use strict&#x27;;
 
-	var subject = require(&#x27;subject&#x27;),
+	var subject  = require(&#x27;subject&#x27;),
 		Backbone = require(&#x27;backbone&#x27;),
-		_ = require(&#x27;lodash&#x27;);
+		Model    = Backbone.Model,
+		_        = require(&#x27;lodash&#x27;);
 
 	var backbone = module.exports = {};
-
 	/**
 	 * backbone.model
 	 */
@@ -174,7 +174,7 @@ define(function (require, exports, module) {
 			//////////////////////////
 			//////////////////////////
 			/// original: if (attrs instanceof Model) {
-			if (attrs instanceof _lmodel) return attrs;
+			if (attrs instanceof _lmodel || attrs instanceof Model) return attrs;
 			//////////////////////////
 			//////////////////////////
 			/// MODIFICATIONS HERE ///
@@ -217,7 +217,7 @@ define(function (require, exports, module) {
 				//////////////////////////
 				//////////////////////////
 				/// original: if (attrs instanceof Model) {
-				if (attrs instanceof _lmodel) {
+				if (attrs instanceof _lmodel || attrs instanceof Model) {
 				//////////////////////////
 				//////////////////////////
 				/// MODIFICATIONS HERE ///
